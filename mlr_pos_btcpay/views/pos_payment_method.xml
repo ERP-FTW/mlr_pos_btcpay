@@ -7,18 +7,18 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='use_payment_terminal']" position="after">
                 <group name="crypto_payment">
-                    <field name="server_url" attrs="{'invisible': [('use_payment_terminal', '!=', 'btcpay')], 'required': [('use_payment_terminal', '=', 'btcpay')]}"/>
-                    <field name="api_key" attrs="{'invisible': [('use_payment_terminal', '!=', 'btcpay')], 'required': [('use_payment_terminal', '=', 'btcpay')]}" password="True"/>
-                    <field name="btcpay_store_id" attrs="{'invisible': [('use_payment_terminal', '!=', 'btcpay')], 'required': [('use_payment_terminal', '=', 'btcpay')]}" password="True"/>
-                    <field name="btcpay_speed_policy" attrs="{'invisible': [('use_payment_terminal', '!=', 'btcpay')], 'required': [('use_payment_terminal', '=', 'btcpay')]}"/>
-                    <field name="btcpay_payment_flow" attrs="{'invisible': [('use_payment_terminal', '!=', 'btcpay')], 'required': [('use_payment_terminal', '=', 'btcpay')]}"/>
-                    <field name="btcpay_selected_crypto" attrs="{'invisible': [('btcpay_payment_flow', '!=', 'direct invoice')], 'required': [('btcpay_payment_flow', '=', 'direct invoice')]}" password="True"/>
-                    <field name="btcpay_expiration_minutes" attrs="{'invisible': [('use_payment_terminal', '!=', 'btcpay')], 'required': [('use_payment_terminal', '=', 'btcpay')]}"/>
-                    <field name="btcpay_company_name" attrs="{'invisible': [('use_payment_terminal', '!=', 'btcpay')], 'required': [('use_payment_terminal', '=', 'btcpay')]}"/>
-                    <field name="crypto_minimum_amount" attrs="{'invisible': [('use_payment_terminal', '!=', 'btcpay')], 'required': [('use_payment_terminal', '=', 'btcpay')]}"/>
-                    <field name="crypto_maximum_amount" attrs="{'invisible': [('use_payment_terminal', '!=', 'btcpay')], 'required': [('use_payment_terminal', '=', 'btcpay')]}"/>
+                    <field name="server_url"/>
+                    <field name="api_key" password="True"/>
+                    <field name="btcpay_store_id" password="True"/>
+                    <field name="btcpay_speed_policy"/>
+                    <field name="btcpay_payment_flow"/>
+                    <field name="btcpay_selected_crypto" password="True"/>
+                    <field name="btcpay_expiration_minutes"/>
+                    <field name="btcpay_company_name" />
+                    <field name="crypto_minimum_amount" />
+                    <field name="crypto_maximum_amount"/>
                 </group>
-                <div colspan="2" class="mt16" attrs="{'invisible': [('use_payment_terminal', '!=', 'btcpay')], 'required': [('use_payment_terminal', '=', 'btcpay')]}">
+                <div colspan="2" class="mt16">
                     <button name="action_test_connection" type="object" string="Test CryptoPay Server connection" class="oe_highlight"/>
                 </div>
             </xpath>

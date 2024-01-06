@@ -15,8 +15,8 @@
     'installable': True,
     'assets': {
         'point_of_sale.assets': [
-            'mlr_pos_btcpay/static/**/*',
-            'mlr_pos_btcpay/static/**/**/*',
+            #'mlr_pos_btcpay/static/**/*',
+            #'mlr_pos_btcpay/static/**/**/*',
         ],
     },
     'license': 'LGPL-3',

@@ -32,7 +32,7 @@ Setup
 8. Select the payment flow of either Payment Link or Direct Invoice. Payment link will create a URL for the customer to visit to pay with either Bitcoin on-chain or with lightning. Direct Invoice currently requires the shop to select either on-chain or lightning to present to the customer. It is possible to create Payment Methods with identical BTCPay server access information but different payment flows that can be used side-by-side in the POS.
 9. Set the minimum and maximum payment amount in fiat, the BTCPay server range is 1 satoshi minimum to unlimited value maximum, so determine a corresponding amount for your Odoo set currency.
 10. Click Test Cryptopay Server Connection to verify the information is correct. If it is correct a green popup will affirm so, if it is incorrect a red popup will appear.
-![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/0bd1bcd8-b6a0-411d-8d6d-232d15c84787)
+![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/1f57f266-374b-48e3-b7f6-c5759eb946a3)
 11. Save the record.
 12. In Configuration -> Payment Methods add the newly created method and save.
 ![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/2509ad4e-4d0c-4d87-9f01-5c832b895b23)
@@ -41,14 +41,16 @@ Setup
 Operation
 1. From the Point of Sale Dashboard open a New Session.
 2. After creating an order navigate to the payment screen and select the created Payment Method. On the Payment Line click Send to generate the payment information.
-
+![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/49f8ce6b-b4c2-4d44-8951-5b97606e8506)
 4. The Payment Line will display the Checking Invoice Status count and have a button Show receipt to view the invoice QR code on the bill receipt. 
-
+![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/e750c633-91bf-43f0-9ead-5e91351b3935)
 6. The QR code can be presented to the customer on the screen or with a printed receipt. Click Ok to navigate back to the Payment Screen.
-
+![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/8a42bbbf-2233-44e4-bfc2-580938574966)
 7. If the customer paid with Lightning click Validate to confirm and close the order, if the invoice is unpaid a message will alert the user and an alternative payment method can be used. If the customer wishes to use another payment method, exe out the payment line and use the other payment method.
-
-
-8. Lightning payment information, satoshi amount and conversion rate, will be stored on the payment model. To view after closing the session navigate to Orders-> Payments and open a specific record.
+![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/de710a9a-f663-4730-999b-56dbacf390a3)
+9. Confirmation of payment will proceed to the paid receipt screen.
+![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/c672e5b9-44fa-4db0-baae-3e5b31793926)
+10. Lightning payment information, satoshi amount and conversion rate, will be stored on the payment model. To view after closing the session navigate to Orders-> Payments and open a specific record.
+![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/1209a9dc-a974-4351-8fc1-f48f96afd37a)
 
 

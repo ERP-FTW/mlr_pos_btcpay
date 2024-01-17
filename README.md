@@ -23,7 +23,7 @@ Setup
 ![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/959a7ae4-e2d2-410f-a92c-2b1d9bf9a22e)
 4. Enter a Name for the Payment Method (Bitcoin is suggested), select the journal as Bank, and select BTCPay from the Use Electronic Payment Terminal section.
 5. Login into BTCPay server to be used and navigate to Account -> Manage Account -> Account Settings -> API Keys. Create a key for use with Odoo by click generate key, enter a label, select permissions (unrestricted access), and click Generate API key at the bottom of the page.
-   ![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/212904fc-8956-4c21-83f2-5b96686164f4)
+   ![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/b32a5147-a31c-4fe7-8bbd-e405871a06de)
    ![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/daf994e4-6bb8-454e-bd8a-46c19bc0f30b)
    - Also make sure to set Store Settings -> Rates -> Default Currency Pairs and the Default currency_pair to match your companies currency (BTC_USD).
    ![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/60c44631-0511-4008-83de-43c80e9ff8b2)

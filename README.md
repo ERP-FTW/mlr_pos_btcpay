@@ -20,18 +20,23 @@ Setup
 
 1. In Odoo navigate to Point of Sale-> Configuration -> Payment Methods .
 2. Click New to create a new record.
-
+![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/959a7ae4-e2d2-410f-a92c-2b1d9bf9a22e)
 4. Enter a Name for the Payment Method (Bitcoin is suggested), select the journal as Bank, and select BTCPay from the Use Electronic Payment Terminal section.
-5. Login into BTCPay server to be used and navigate to Account -> API. Create a key for use with Odoo.
-   - Also make sure to set rate source and the Default currency_pair to match your companies currency.
+5. Login into BTCPay server to be used and navigate to Account -> Manage Account -> Account Settings -> API Keys. Create a key for use with Odoo by click generate key, enter a label, select permissions (unrestricted access), and click Generate API key at the bottom of the page.
+   ![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/212904fc-8956-4c21-83f2-5b96686164f4)
+   ![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/daf994e4-6bb8-454e-bd8a-46c19bc0f30b)
+   - Also make sure to set Store Settings -> Rates -> Default Currency Pairs and the Default currency_pair to match your companies currency (BTC_USD).
+   ![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/60c44631-0511-4008-83de-43c80e9ff8b2)
 7. From BTCPay server the following information and paste in the Odoo Payment Method record: the server base URL (https://xx.com), API key, and store ID.
-
+![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/6019899d-fe9d-48ad-97ba-51c2c1d24c37)
 8. Select the payment flow of either Payment Link or Direct Invoice. Payment link will create a URL for the customer to visit to pay with either Bitcoin on-chain or with lightning. Direct Invoice currently requires the shop to select either on-chain or lightning to present to the customer. It is possible to create Payment Methods with identical BTCPay server access information but different payment flows that can be used side-by-side in the POS.
 9. Set the minimum and maximum payment amount in fiat, the BTCPay server range is 1 satoshi minimum to unlimited value maximum, so determine a corresponding amount for your Odoo set currency.
 10. Click Test Cryptopay Server Connection to verify the information is correct. If it is correct a green popup will affirm so, if it is incorrect a red popup will appear.
-
+![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/0bd1bcd8-b6a0-411d-8d6d-232d15c84787)
 11. Save the record.
 12. In Configuration -> Payment Methods add the newly created method and save.
+![image](https://github.com/ERP-FTW/mlr_pos_btcpay/assets/124227412/2509ad4e-4d0c-4d87-9f01-5c832b895b23)
+
 
 Operation
 1. From the Point of Sale Dashboard open a New Session.

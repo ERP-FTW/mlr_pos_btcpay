@@ -14,9 +14,8 @@
     'depends': ['point_of_sale','mlr_pos_cryptopayments'],
     'installable': True,
     'assets': {
-        'point_of_sale.assets': [
+        'point_of_sale._assets_pos': [
             'mlr_pos_btcpay/static/**/*',
-            'mlr_pos_btcpay/static/**/**/*',
         ],
     },
     'license': 'LGPL-3',

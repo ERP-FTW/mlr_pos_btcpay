@@ -1,6 +1,6 @@
-odoo.define('pos_btcpaypayment.models', function (require) {
-var models = require('point_of_sale.models');
-var PaymentbtcpayPayment = require('pos_btcpaypayment.payment');
+/** @odoo-module */
+import { register_payment_method } from "@point_of_sale/app/store/pos_store";
+import { PaymentBTCPayPayment } from '@mlr_pos_btcpay/js/payment_cryptopayment';
 
-models.register_payment_method('btcpay', PaymentbtcpayPayment);
-});
+    register_payment_method('btcpay', PaymentBTCPayPayment);
+

@@ -37,8 +37,6 @@ export class PaymentBTCPayPayment extends PaymentInterface {
         catch (error) {
            return false
         }
-        console.log('Logging data') //SAGAR
-        console.log(data) //SAGAR
         if(data.code != '0'){
             alert('Create invoice error:'+ data.code);
             return false;}

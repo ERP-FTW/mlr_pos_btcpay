@@ -2,8 +2,8 @@
 
 import { _t } from "@web/core/l10n/translation";
 import { PaymentInterface } from "@point_of_sale/app/payment/payment_interface";
-import { ErrorPopup } from "@point_of_sale/app/errors/popups/error_popup";
-
+import { BillScreen } from "@pos_restaurant/app/bill_screen/bill_screen";
+import { Dialog } from "@web/core/dialog/dialog";
 const REQUEST_TIMEOUT = 5000
 
 export class PaymentBTCPayPayment extends PaymentInterface {
@@ -14,10 +14,25 @@ export class PaymentBTCPayPayment extends PaymentInterface {
     * @returns Promise
     */
     async send_payment_request(cid) {
-        let line = this.pos.get_order().selected_paymentline;
-        let order_id = this.pos.get_order().uid;
-        console.log(line.payment_method.id);
-        console.log(line.payment_method.use_payment_terminal);
+        let order = this.pos.get_order();
+        if (!order) {
+            console.error("No order found");
+            return false;
+        }
+        console.log(order.id);
+
+        let line = this.pos.get_order().get_selected_paymentline();
+        if (!line) {
+        console.error("No selected payment line found");
+        return false;
+        }
+        console.log(line.id);
+
+        let order_id = this.pos.get_order().uuid;
+        console.log(line.payment_method_id.id);
+        console.log(line.amount);
+        console.log(order_id);
+        console.log(line.payment_method_id.use_payment_terminal);
         await super.send_payment_request(...arguments);
         let data = null;
         try {
@@ -31,10 +46,13 @@ export class PaymentBTCPayPayment extends PaymentInterface {
             data = await this.env.services.orm.silent.call(
               'pos.payment.method',
               'btcpay_create_crypto_invoice',
-              [{pm_id: line.payment_method.id, amount: line.amount, order_id: order_id}],
+              [{pm_id: line.payment_method_id.id, amount: line.amount, order_id: order_id}],
              );
+            console.error("called payment method");
+
         }
         catch (error) {
+           console.error("error calling payment method");
            return false
         }
         if(data.code != '0'){
@@ -76,16 +94,16 @@ export class PaymentBTCPayPayment extends PaymentInterface {
         let api_resp = null;
 
 		try {
-			let order_id = this.pos.get_order().uid;
+			let order_id = this.pos.get_order().uuid;
 			console.log(order_id);
-			console.log(line.payment_method.id);
+			console.log(line.payment_method_id.id);
 			for (let i = 0; i < 100; i++) {
 				line.crypto_payment_status = 'Checking Invoice status '+(i+1)+'/100';
 				try {
                     api_resp = await this.env.services.orm.silent.call(
                        'pos.payment.method',
                        'btcpay_check_payment_status',
-                        [{ invoice_id: line.cryptopay_invoice_id, pm_id: line.payment_method.id, order_id: order_id }],
+                        [{ invoice_id: line.cryptopay_invoice_id, pm_id: line.payment_method_id.id, order_id: order_id }],
                     );
 					if (api_resp.status == 'Paid' || api_resp.status == 'Settled') {
 						console.log("valid btcpay transaction - timer");

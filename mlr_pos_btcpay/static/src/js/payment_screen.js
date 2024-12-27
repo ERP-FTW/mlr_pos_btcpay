@@ -1,9 +1,12 @@
 /** @odoo-module */
 
 import { _t } from "@web/core/l10n/translation";
-import { ErrorPopup } from "@point_of_sale/app/errors/popups/error_popup";
+import { ErrorPopup } from "@web/core/confirmation_dialog/confirmation_dialog";
 import { PaymentScreen } from "@point_of_sale/app/screens/payment_screen/payment_screen";
 import { patch } from "@web/core/utils/patch";
+import { BillScreen } from "@pos_restaurant/app/bill_screen/bill_screen";
+import { Dialog } from "@web/core/dialog/dialog";
+
 
 patch(PaymentScreen.prototype, {
     async validateOrder(isForceValidate) {

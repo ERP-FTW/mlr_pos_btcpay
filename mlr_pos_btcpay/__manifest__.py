@@ -7,6 +7,7 @@
     'sequence': 7,
     'summary': 'Integrate your POS with Bitcoin on-chain and lightning payments',
     'description': '',
+    "images": ['static/description/icon.png'],
     'data': [
         'views/pos_payment_method.xml',
     ],

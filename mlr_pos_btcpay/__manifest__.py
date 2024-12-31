@@ -3,6 +3,7 @@
 {
     'name': 'MLR POS Bitcoin Payments - BTCpay',
     'version': '1.0',
+    'author': 'MLR - MI Lightning Rod',
     'category': 'Sales/Point of Sale',
     'sequence': 7,
     'summary': 'Integrate your POS with Bitcoin on-chain and lightning payments',

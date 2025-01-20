@@ -23,13 +23,13 @@ patch(PaymentScreen.prototype, {
         console.log('calling new validate order for odoo 17')
         for (let line of this.paymentLines) {
             console.log("called btcpay validation");
-            if (line.is_crypto_payment && line.payment_method.use_payment_terminal == 'btcpay') {
+            if (line.is_crypto_payment && line.payment_method_id.use_payment_terminal == 'btcpay') {
                 try {
                     let order_id = this.pos.get_order().uid;
                     let api_resp = await this.env.services.orm.silent.call(
                         'pos.payment.method',
                         'btcpay_check_payment_status',
-                        [{ invoice_id: line.cryptopay_invoice_id, pm_id: line.payment_method.id, order_id: order_id }],
+                        [{ invoice_id: line.cryptopay_invoice_id, pm_id: line.payment_method_id.id, order_id: order_id }],
                     );
                     console.log(api_resp);
                     console.log(api_resp.status);

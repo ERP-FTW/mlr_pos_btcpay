@@ -6,9 +6,14 @@ import { PaymentScreen } from "@point_of_sale/app/screens/payment_screen/payment
 import { patch } from "@web/core/utils/patch";
 import { BillScreen } from "@pos_restaurant/app/bill_screen/bill_screen";
 import { Dialog } from "@web/core/dialog/dialog";
-
+const { useService } = require("@web/core/utils/hooks");
 
 patch(PaymentScreen.prototype, {
+     class extends PaymentScreen {
+            setup() {
+                super.setup();
+                this.popup = useService("popup"); // ✅ Fix for 'this.popup is undefined'
+            }
     async validateOrder(isForceValidate) {
         /*const order = this.currentOrder;
         if (!this.pos.config.set_tip_after_payment || order.is_tipped) {

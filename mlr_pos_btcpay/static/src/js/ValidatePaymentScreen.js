@@ -31,10 +31,10 @@ odoo.define("point_of_sale.BTCPayValidatePaymentScreen", function (require) {
                      line.set_payment_status('done');
 				}
                                 else if (api_resp.status == 'New' || api_resp.status == 'Unpaid' || api_resp.status == 'Processing') {
-	                                this.showPopup("ErrorPopup", {
-       		                                 title: this.env._t("Payment Request Pending"),
-               		                         body: this.env._t("Payment Pending, retry after customer confirms"),
-                       		        });
+	                                	await this.showPopup("ErrorPopup", {
+    						title: this.env._t("Payment Request Pending"),
+    						body: this.env._t("Payment Pending, retry after customer confirms"),
+						});
                        		        line.set_payment_status('cryptowaiting');
                                 }
 				else if (api_resp.status == 'Expired' || api_resp.status == 'Invalid') {

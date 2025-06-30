@@ -1,15 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <templates id="template" xml:space="preserve">
 	<t t-name="point_of_sale.PaymentScreenValidate" t-inherit="point_of_sale.PaymentScreenValidate" t-inherit-mode="extension" owl="1">
-        	<xpath expr="//button[contains(@class, 'validation-button')]" position="replace">                
-                <div class="button next validation btn btn-primary btn-lg py-5 rounded-0 d-flex flex-column align-items-center justify-content-center fw-bolder" 
-                   t-attf-class="{{currentOrder.is_paid() and currentOrder._isValidEmptyOrder() or (typeof currentOrder.selected_paymentline !== 'undefined' and currentOrder.selected_paymentline.is_crypto_payment) ? 'highlight' : 'disabled'}}"
-                   t-on-click="() => this.validateOrder()">
-                   <div class="pay-circle d-flex align-items-center justify-content-center mb-2">
-                      <i class="oi oi-chevron-right" role="img" aria-label="Pay" title="Pay" />
-                   </div>
-                  <span class="next_text">Validate</span>
-               </div>
+        	<xpath expr="//button[contains(@class, 'validation') and contains(@class, 'next')]" position="replace">                
+			   <button class="button next validation btn btn-primary btn-lg w-50 py-3 lh-lg	"
+					   t-attf-class="{{((currentOrder.is_paid() and currentOrder._isValidEmptyOrder()) or (typeof currentOrder.get_selected_paymentline() !== 'undefined' and currentOrder.get_selected_paymentline().is_crypto_payment)) ? 'highlight' : 'disabled'}}"                  
+			           t-on-click="() => this.validateOrder()"> 
+					<span class="next_text">Validate</span>
+			   </button>
 		</xpath>
 	</t>
 </templates>

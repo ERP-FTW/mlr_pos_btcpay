@@ -48,7 +48,8 @@ export class PaymentBTCPayPayment extends PaymentInterface {
               'btcpay_create_crypto_invoice',
               [{pm_id: line.payment_method_id.id, amount: line.amount, order_id: order_id}],
              );
-            console.error("called payment method");
+            console.log("called payment method");
+			console.log(data);
 
         }
         catch (error) {
@@ -59,7 +60,8 @@ export class PaymentBTCPayPayment extends PaymentInterface {
             alert('Create invoice error:'+ data.code);
             return false;}
         const codeWriter = new window.ZXing.BrowserQRCodeSvgWriter();
-        console.log(data.cryptopay_payment_link_serial);
+		console.log('logging data.cryptopay_payment_link');
+        console.log(data.cryptopay_payment_link);
         //let qr_code_svg = line.cryptopay_payment_link;
         let qr_code_svg = new XMLSerializer().serializeToString(codeWriter.write(data.cryptopay_payment_link, 150, 150));
         line.is_crypto_payment = true;

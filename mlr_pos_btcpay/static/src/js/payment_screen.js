@@ -41,10 +41,10 @@ patch(PaymentScreen.prototype, {
                     }
                     else if (api_resp.status == 'New' || api_resp.status == 'Unpaid' || api_resp.status == 'Processing') {
                         console.log("unpaid btcpay transaction");
-                        this.popup.add(ErrorPopup, {
-                            title: _t("Payment Request Pending"),
-                            body: _t("Payment Pending, retry after customer confirms"),
-                        });
+                            await this.showPopup("ErrorPopup", {
+                                title: _t("Payment Request Pending"),
+                                body: _t("Payment Pending, retry after customer confirms"),
+                                });
                         line.set_payment_status('cryptowaiting');
                     }
                     else if (api_resp.status == 'Expired' || api_resp.status == 'Invalid') {
